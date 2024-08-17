@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/all.minl.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/owl.style.css' %}" />
+
+    <title> Medicines | {% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar_dark bg-success">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link text-white" href={% url "about" %}>About Us</a>
+            </li>
+             
+                <li class="nav-item">
+                    <a class="nav-link text-white" href={% url "contact" %}>Contact Us</a>
+                </li>
+
+
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- <li class="nav-item dropdown mx-2">
+                <a class="nav-link dropdown-toggle text-white" href="#" 
+                   id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dhanya</a>
+                <ul class="dropdown-menu" aria-labelledby="ProfileDropdown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Orders</a></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </li> -->
+            <li class="nav-item mx-2">
+                <a href="{% url 'view_cart' %}" class="nav-link text-white">Cart</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="#" class="nav-link text-white">Wishlist</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="{% url 'admin_login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="" class="nav-link text-white">Registration</a>
+
+            </li>
+        </ul>
+        
+        </div>
+      </nav>
+
+      {% block banner_slider %}{% endblock banner_slider %}
+      
+{% block information %}
+<div class="container">
+  <div class="row bg-success text-center p-5 text-white border-bottom shadow">
+    <h1>Products</h1>
+    <small class="fs-5">Welcome to Apolo Pharmacy, your trusted healthcare partner. We are dedicated to providing you with convenient access to a wide range of medications, healthcare products, and expert guidance.
+    Our team of experienced pharmacists is ready to assist you with personalized advice and ensure you receive the care you deserve.
+    </small>
+  </div>
+</div>
+{% endblock information %}
+{% block main-content %}{% endblock main-content %}
+      
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script script="{% static 'app/js/owl.carousel.min.js' %}"></script>
+    <script script="{% static 'app/js/all.min.js' %}"></script>
+
+    <script script="{% static 'app/js/myscript.js' %}"></script>
+
+    <script>
+      $(document).ready(function() {
+        // Initialize the carousel
+        $('#carouselExample').carousel();
+    
+        // Automatically start sliding the carousel
+        $('#carouselExample').carousel('cycle');
+    
+        // Custom function to enable looping
+        $('#carouselExample').on('slide.bs.carousel', function(e) {
+          var $lastSlide = $('.carousel-item:last');
+          var $firstSlide = $('.carousel-item:first');
+          
+          if (e.direction == 'left' && $lastSlide.hasClass('active')) {
+            $firstSlide.addClass('active');
+          }
+        });
+      });
+    </script>
+
+
+
+
+</body>
+</html>
+

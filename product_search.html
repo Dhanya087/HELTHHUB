@@ -1,0 +1,16 @@
+<!-- product_search.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Search Results</h2>
+
+  <form method="GET" action="{% url 'search_results' %}">
+    <input type="text" name="q" placeholder="Search products..." style="border: 1px solid orange; border-radius: 25px; padding: 10px;">
+    <button type="submit" style="background-color: transparent; border: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">&#128269;</button>
+</form>
+
+
+{% empty %}
+    <p>No products found.</p>
+{% endfor %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bill {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .bill h2 {
+            text-align: center;
+            color: #333;
+            padding: 20px 0;
+            background-color: #3498db;
+            margin: 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .bill table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .bill table,
+        .bill th,
+        .bill td {
+            border: 1px solid #ddd;
+        }
+
+        .bill th,
+        .bill td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .bill th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .bill tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .bill tfoot {
+            font-weight: bold;
+        }
+
+        .bill tfoot td {
+            background-color: #5bb1e7;
+            color: #fff;
+        }
+
+        .bill tfoot tr:hover {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bill">
+        <h2>Checkout</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.product.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" align="right">Total:</td>
+                    <td>{{ total }}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+
+</html>

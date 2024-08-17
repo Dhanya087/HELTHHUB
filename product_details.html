@@ -1,0 +1,84 @@
+{% block content %}
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa; /* Light gray background */
+      color: #343a40; /* Dark text color */
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #007bff; /* Blue color for the heading */
+      margin-bottom: 10px; /* Add some bottom margin */
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 8px; /* Add some bottom margin for paragraphs */
+    }
+
+    img {
+      max-width: 100%; /* Make sure images are responsive */
+      height: auto;
+      border: 1px solid #ced4da; /* Light border color */
+      border-radius: 4px;
+      margin-top: 10px; /* Add some top margin */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-to-cart-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #28a745; /* Green color for the button */
+      color: #fff;
+      text-decoration: none;
+      border: none; /* Remove button border */
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Add a smooth transition for better user experience */
+    }
+
+    .add-to-cart-button:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+
+    /* Additional styling for the details section */
+    .details-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
+      gap: 20px; /* Add some space between grid items */
+    }
+
+    .details-section p {
+      margin: 0; /* Remove default margin for paragraphs inside the details section */
+    }
+  </style>
+
+  <h1>{{ product.title }}</h1>
+  <div class="details-section">
+    <div>
+      <p>{{ product.description }}</p>
+      <p>Price: {{ product.price }}</p>
+      <p>Expiry_date:<br>{{ product.expiry_date }}</p>
+      <p>Mg:<br>{{ product.mg }}</p>
+    </div>
+    <div>
+      <p>Net Quantity<br>{{ product.net_quantity}}</p>
+      <p>Batch No<br>{{ product.batch_no}}</p>
+      <p>Brand<br>{{ product.brand }}</p>
+      <p>Weight<br>{{ product.weight }}</p>
+      <p>Item Form<br>{{ product.item_form }}</p>
+    </div>
+    <div>
+      <p>Age<br>{{ product.age_range }}</p>
+      <p>Dimension<br>{{ product.item_dimension }}</p>
+      <p>Status<br>{{ product.availability_status }}</p>
+      <img src="{{ product.product_image.url }}" alt="{{ product.title }}">
+      <a href="{% url 'add_to_cart' product.id %}" class="add-to-cart-button">Add to Cart</a>
+    </div>
+  </div>
+
+{% endblock %}
+
